@@ -4,19 +4,26 @@ import { getAntdInputVald } from "../../utils/helper";
 import FormItem from "antd/es/form/FormItem";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginUser } from "../../apicalls/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { SetLoading } from "../../redux/loaderSlice";
 
 const Login = () => {
   const [userType, setUserType] = useState("donar");
+  const { loading } = useSelector((state) => state.loaders);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
       const response = await LoginUser({ ...values, userType });
+      dispatch(SetLoading(true));
       if (response?.success) {
         message.success(response?.message);
         localStorage.setItem("token", response.token);
+        dispatch(SetLoading(true));
       } else throw new Error(response?.message);
     } catch (error) {
       message.error(error.message);
+      dispatch(SetLoading(false));
     }
     if (localStorage.getItem("token")) {
       navigate("/");

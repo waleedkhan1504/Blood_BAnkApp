@@ -16,3 +16,11 @@ export const LoginUser = async (payload) => {
   );
   return response;
 };
+
+export const GetCurrentUser = async () => {
+  const response = await axiosInstance(
+    "get",
+    "http://localhost:5000/api/auth/currentUser"
+  );
+  return response;
+};
