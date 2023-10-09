@@ -24,3 +24,27 @@ export const GetCurrentUser = async () => {
   );
   return response;
 };
+export const GetAllDonarsOfAnOrganization = () => {
+  return axiosInstance("get", `http://localhost:5000/api/auth/get-all-donars`);
+};
+
+export const GetAllHospitalsOfAnOrganization = () => {
+  return axiosInstance(
+    "get",
+    `http://localhost:5000/api/auth/get-all-hospitals`
+  );
+};
+
+export const GetAllOrganizationsOfADonar = () => {
+  return axiosInstance(
+    "get",
+    `http://localhost:5000/api/auth/get-all-organizations-of-a-donar`
+  );
+};
+
+export const GetAllOrganizationsOfAHospital = () => {
+  return axiosInstance(
+    "get",
+    `http://localhost:5000/api/auth/get-all-organizations-of-a-hospital`
+  );
+};

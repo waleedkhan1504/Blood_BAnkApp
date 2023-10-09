@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ProtectedPage from "./components/ProtectedPage";
+import Profile from "./pages/profiles";
 function App() {
   return (
     <>
@@ -15,6 +16,15 @@ function App() {
               <ProtectedPage>
                 {" "}
                 <HomePage />{" "}
+              </ProtectedPage>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedPage>
+                {" "}
+                <Profile />{" "}
               </ProtectedPage>
             }
           />
